@@ -1,0 +1,7 @@
+apache-opennlp-1.9.3
+.vscode
+*.csv
+*.txt
+*.train
+*.onlp
+*.exe
