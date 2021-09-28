@@ -1,3 +1,3 @@
-module vael.xyz/ner
+module vael.xyz/go-ner-opennlp
 
 go 1.17

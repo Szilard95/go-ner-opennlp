@@ -4,6 +4,7 @@ apache-opennlp-1.9.3
 *.txt
 *.train
 *.onlp
+*.bin
 
 # Binaries for programs and plugins
 *.exe
