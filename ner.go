@@ -44,7 +44,7 @@ func csvToOnlp(ctoInFileName, ctoOutFileName, ctoInType string) {
 			log.Fatal(err)
 		}
 
-		if ctoInType == "trainingSet" && record[3] == "" { // csv end: ;;;
+		if ctoInType == "trainingSet" && record[1] == "" { // csv end: ;;;
 			break
 		}
 
@@ -80,11 +80,15 @@ func csvToOnlp(ctoInFileName, ctoOutFileName, ctoInType string) {
 // OO -> <S><E> <S><E>	| startend
 func iobEncode(prevRecord, record []string) string {
 	encodedChunk := ""
-	currType := record[3]
+	typeField := 3
+	if len(record) <= 3 { // in case the POS field is missing from the training set
+		typeField = 2
+	}
+	currType := record[typeField]
 	var prevType string
 
 	if prevRecord != nil {
-		prevType = prevRecord[3]
+		prevType = prevRecord[typeField]
 	}
 
 	if currType[0] == 'B' { // begin chunk
